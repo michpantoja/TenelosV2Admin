@@ -6,7 +6,7 @@ import {
   LuUsers2,
   LuClipboardList,
   LuTrophy,
-  LuImport,
+  LuUpload,
   LuLogOut,
 } from "react-icons/lu";
 import Link from "next/link";
@@ -41,7 +41,7 @@ export default function Sidebar() {
     },
     {
       name: "Import",
-      icon: <LuImport size={16} />,
+      icon: <LuUpload size={16} />,
       href: "/import",
     },
   ];
