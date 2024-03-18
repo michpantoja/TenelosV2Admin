@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { LuUsers2, LuClipboardList, LuTrophy, LuImport } from "react-icons/lu";
+import {
+  LuUsers2,
+  LuClipboardList,
+  LuTrophy,
+  LuImport,
+  LuLogOut,
+} from "react-icons/lu";
 import Link from "next/link";
 
 export default function Sidebar() {
@@ -10,10 +16,13 @@ export default function Sidebar() {
   const [selectedItem, setSelectedItem] = useState("");
 
   useEffect(() => {
-    // Set the selected item based on the current route
-    setSelectedItem(pathname);
+    // Find the nav item that matches the current pathname
+    const activeItem = navItems.find((item) => pathname.startsWith(item.href));
+    if (activeItem) {
+      setSelectedItem(activeItem.href);
+    }
   }, [pathname]);
-
+  
   const navItems = [
     {
       name: "Players",
@@ -38,13 +47,13 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full py-8">
       <div className="flex flex-col gap-2">
         {navItems.map((item, index) => (
           <Link
             key={index}
             href={item.href}
-            className={`flex items-center pl-4 pr-2 py-2 text-darkGray font-semibold text-sm rounded-lg cursor-pointer ${
+            className={`flex items-center pl-4 pr-2 py-2 text-darkGray font-semibold text-sm rounded-lg cursor-pointer select-none ${
               selectedItem === item.href
                 ? "bg-green text-white fill-white"
                 : "hover:bg-lightGray"
@@ -54,6 +63,10 @@ export default function Sidebar() {
             <span className="ml-3">{item.name}</span>
           </Link>
         ))}
+        <div className="flex items-center px-4 gap-3 py-2 text-red-600 font-semibold text-sm rounded-lg cursor-pointer hover:bg-lightGray select-none">
+          <LuLogOut size={16} />
+          Logout
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { IoSearch } from "react-icons/io5";
 import Select, { ControlProps, GroupBase, components } from "react-select";
 
@@ -18,12 +19,15 @@ export default function Navbar() {
   };
   return (
     <div className="flex justify-between items-center px-6 py-4">
-      <Image
-        src="/assets/tenelos_logo.png"
-        alt="Tenelos"
-        width={100}
-        height={100}
-      />
+      <Link href="/players">
+        <Image
+          src="/assets/tenelos_logo.png"
+          alt="Tenelos"
+          width={100}
+          height={100}
+          className="select-none cursor-pointer"
+        />
+      </Link>
       <Select
         className="w-[250px] font-semibold text-base select-none outline-none"
         isSearchable={true}
