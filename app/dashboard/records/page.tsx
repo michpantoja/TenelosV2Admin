@@ -1,9 +1,9 @@
 "use client";
 
-import DropdownButton from "@/components/DropdownButton";
-import DeleteTournamentInfo from "@/components/Modals/DeleteTournamentInfo";
-import EditTournamentInfo from "@/components/Modals/EditTournamentInfo";
-import Pagination from "@/components/Pagination";
+import DropdownButton from "@/app/components/DropdownButton";
+import DeleteTournamentInfo from "@/app/components/Modals/DeleteTournamentInfo";
+import EditTournamentInfo from "@/app/components/Modals/EditTournamentInfo";
+import Pagination from "@/app/components/Pagination";
 import Link from "next/link";
 import { useState } from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
@@ -87,7 +87,7 @@ export default function Tournaments() {
         setter={() => setIsDeleteModalOpen(false)}
       />
       <div className="flex flex-col gap-2">
-        <h1 className="font-semibold text-xl">Tournaments Records</h1>
+        <h1 className="font-semibold text-xl">Records</h1>
         <div className="flex flex-col">
           <div className="flex flex-col pb-2.5 gap-2.5">
             <div className="w-full flex flex-wrap gap-1 sm:gap-2.5">

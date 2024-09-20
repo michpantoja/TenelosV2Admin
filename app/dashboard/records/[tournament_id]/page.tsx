@@ -1,8 +1,8 @@
 "use client";
 
-import DeleteMatch from "@/components/Modals/DeleteMatch";
-import EditMatch from "@/components/Modals/EditMatch";
-import PlayHighlight from "@/components/Modals/PlayHighlight";
+import DeleteMatch from "@/app/components/Modals/DeleteMatch";
+import EditMatch from "@/app/components/Modals/EditMatch";
+import PlayHighlight from "@/app/components/Modals/PlayHighlight";
 import Link from "next/link";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";

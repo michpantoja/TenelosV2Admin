@@ -1,7 +1,7 @@
 "use client";
 
-import DropdownButton from "@/components/DropdownButton";
-import Pagination from "@/components/Pagination";
+import DropdownButton from "@/app/components/DropdownButton";
+import Pagination from "@/app/components/Pagination";
 import { IoChevronDownOutline, IoSearch } from "react-icons/io5";
 import ReactCountryFlag from "react-country-flag";
 import Select, { ControlProps, GroupBase, components } from "react-select";

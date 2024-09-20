@@ -1,48 +1,41 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import {
-  LuUsers2,
-  LuClipboardList,
-  LuTrophy,
-  LuUpload,
-  LuLogOut,
-} from "react-icons/lu";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { LuUsers2, LuClipboardList, LuTrophy, LuUpload, LuLogOut } from 'react-icons/lu';
 
-export default function Sidebar() {
+const Sidebar = () => {
   const pathname = usePathname();
-  const [selectedItem, setSelectedItem] = useState("");
+  const [selectedItem, setSelectedItem] = useState('');
 
   useEffect(() => {
-    // Find the nav item that matches the current pathname
-    const activeItem = navItems.find((item) => pathname.startsWith(item.href));
+    const activeItem = navItems.find(item => item.href === pathname);
     if (activeItem) {
       setSelectedItem(activeItem.href);
     }
   }, [pathname]);
-  
+
   const navItems = [
     {
       name: "Players",
       icon: <LuUsers2 size={16} />,
-      href: "/players",
+      href: "/dashboard",
     },
     {
       name: "Records",
       icon: <LuClipboardList size={16} />,
-      href: "/records",
+      href: "/dashboard/records",
     },
     {
       name: "Tournaments",
       icon: <LuTrophy size={16} />,
-      href: "/tournaments",
+      href: "/dashboard/tournaments",
     },
     {
       name: "Import",
       icon: <LuUpload size={16} />,
-      href: "/import",
+      href: "/dashboard/import",
     },
   ];
 
@@ -58,16 +51,27 @@ export default function Sidebar() {
                 ? "bg-green text-white fill-white"
                 : "hover:bg-lightGray"
             }`}
+            onClick={() => setSelectedItem(item.href)}
           >
             {item.icon}
             <span className="ml-3">{item.name}</span>
           </Link>
         ))}
-        <div className="flex items-center px-4 gap-3 py-2 text-red-600 font-semibold text-sm rounded-lg cursor-pointer hover:bg-lightGray select-none">
+        <Link
+         className="flex
+          items-center 
+          px-4 gap-3 py-2 
+          text-red-600 font-semibold 
+          text-sm rounded-lg cursor-pointer 
+          hover:bg-lightGray select-none"
+          href={"/logout"}
+          >
           <LuLogOut size={16} />
           Logout
-        </div>
+        </Link>
       </div>
     </div>
   );
-}
+};
+
+export default Sidebar;
